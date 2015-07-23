@@ -1,34 +1,32 @@
 Solve anagram from the Dinosaur Comic at qwantz.com/index.php?comic=1663, with this letter count:
-    12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg
+	12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg
 
 hints:
-    All words in the solution are dictionary words.
-    What's more, all words in the solution are in the Jadrian's awesome Qwantz Corpus!
-    The solution is natural-sounding, reasonably-grammatical dialogue that T-Rex would say, using phrasing that T-Rex would use.
-    The punctuation :,!! is in the solution, in that order!
-    The longest word in the solution is 11 characters long.
-    The second longest word contains 8 characters and is next to the 11 character word
-    The solution does not refer to anagrams or puzzles or winning t-shirts.
-    However, what T-Rex is saying is directly related to the content of the comic the puzzle appears in.
-    The letters given are case-sensitive!
-    The first word of the solution is "I".
+	All words in the solution are dictionary words.
+	What's more, all words in the solution are in the Jadrian's awesome Qwantz Corpus!
+	The solution is natural-sounding, reasonably-grammatical dialogue that T-Rex would say, using phrasing that T-Rex would use.
+	The punctuation :,!! is in the solution, in that order!
+	The longest word in the solution is 11 characters long.
+	The second longest word contains 8 characters and is next to the 11 character word
+	The solution does not refer to anagrams or puzzles or winning t-shirts.
+	However, what T-Rex is saying is directly related to the content of the comic the puzzle appears in.
+	The letters given are case-sensitive!
+	The first word of the solution is "I".
 
 strategy:
-    Solve function takes partial solution and recursively solves rest of puzzle
-    Use words from list in order of frequency
-    Pre-filter word list to remove words that
-        don't match the letter counts
-        aren't in the dictionary
-        aren't in the qwantz corpus
-    Check at each step:
-        Is this solution 98 characters or less total?
-        Does this solution match the character count?
-        If this solution has less than 11 characters left, does it contain at least one 11-character word?
-        If this solution has less than 8 characters to add, does it contain at least one 8-character word?
-        
-    How to avoid generating each permutation of a set of words?
-    Filter word collections by... ?
-        Distribution of word length
-        number of 2- and 3-grams
-        markov-chain probability of that order of words
-            not exactly- if a single 2-gram isn't already existing the result is 0 probability
+	Basically: Create all possible combinations of words that fit the requirements, then permute those	
+	Guess a word that fits character counts, then solve recursively for the rest of the words
+	      (each recursion starts at the last word guessed so we get combinations not permutations)
+	Pre-filter word list to remove words that
+		don't match the letter counts
+		have 9 or 10 letters
+		aren't in the dictionary
+		aren't in the qwantz corpus
+
+	The only thing I need to check for at each step is, does this fit with word counts?
+
+	evaluations
+		Sort combinations by
+		how well they fit expected word length distribution?
+		how well they match "word choice distribution"? (better word for this?)
+	Sort permutations by fuzzy grammar rating?
