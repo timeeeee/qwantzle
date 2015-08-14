@@ -1,3 +1,4 @@
+from string import digits
 QWANTZLE_COUNTS = "12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg"
 
 def matches_counts(word, counts):
@@ -40,6 +41,8 @@ def subtract_word(counts, word):
     if any(count < 0 for count in new_counts.values()):
         raise ValueError('Cannot subtract word "{}" from counts {}'.format(
             word, counts))
+
+    return new_counts
 
 
 def load_wordlist(filename):

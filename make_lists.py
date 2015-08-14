@@ -7,6 +7,7 @@ FILTERED_OUT = "filtered_words.txt"
 SHORT_OUT = "short_words.txt"
 EIGHT_OUT = "eight_char_words.txt"
 ELEVEN_OUT = "eleven_char_words.txt"
+BLACKLIST_FILE = "blacklist.txt"
 
 def is_alphabetic(word):
     for char in set(word):
@@ -24,13 +25,15 @@ def get_corp(filename):
 def main():
     corp_words = get_corp(CORPUS_FILE)
     letter_counts = make_count_dict(QWANTZLE_COUNTS)
+
+    blacklist = load_wordlist(BLACKLIST_FILE)
     
     short = []
     words = []
     eight_letter = []
     eleven_letter = []
     for word in corp_words:
-        if matches_counts(word, letter_counts):
+        if matches_counts(word, letter_counts) and word not in blacklist:
             length = len(word)
             if length < 8:
                 short.append(word)
