@@ -1,6 +1,7 @@
 QWANTZLE_COUNTS = "12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg"
 
 def matches_counts(word, counts):
+    """Check if there are enough characters to make up a word"""
     local_counts = counts.copy()
     for char in word:
         if char not in local_counts or local_counts[char] == 0:
@@ -12,6 +13,7 @@ def matches_counts(word, counts):
 
 
 def make_count_dict(count_string):
+    """Make dict of character counts from an anagram string"""
     count_list = list(count_string)
     count_dict = dict()
     number_string = ""
@@ -30,6 +32,7 @@ def make_count_dict(count_string):
 
 
 def subtract_word(counts, word):
+    """Create a copy of character count dictionary, minus a word"""
     new_counts = counts.copy()
     for char in word:
         new_counts[char] -= 1
@@ -37,3 +40,9 @@ def subtract_word(counts, word):
     if any(count < 0 for count in new_counts.values()):
         raise ValueError('Cannot subtract word "{}" from counts {}'.format(
             word, counts))
+
+
+def load_wordlist(filename):
+    """Load word list from a file into a list of strings"""
+    with open(filename) as f:
+        return [line.strip() for line in f]
