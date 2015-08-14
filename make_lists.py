@@ -1,7 +1,8 @@
 from string import lowercase, digits
 
+from utils import *
+
 CORPUS_FILE = "qwantzcorpus"
-QWANTZLE_COUNTS = "12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg"
 FILTERED_OUT = "filtered_words.txt"
 SHORT_OUT = "short_words.txt"
 EIGHT_OUT = "eight_char_words.txt"
@@ -12,35 +13,6 @@ def is_alphabetic(word):
         if char not in (lowercase + "I"):
             return False
     return True
-
-
-def matches_counts(word, counts):
-    local_counts = counts.copy()
-    for char in word:
-        if char not in local_counts or local_counts[char] == 0:
-            return False
-        else:
-            local_counts[char] -= 1
-    # If we didn't run out of any characters yet, we're good
-    return True
-
-
-def make_count_dict(count_string):
-    count_list = list(count_string)
-    count_dict = dict()
-    number_string = ""
-    while count_list:
-        char = count_list.pop(0)
-        if char in digits:
-            number_string += char
-        else:
-            if number_string:
-                number = int(number_string)
-            else:
-                number = 1
-            count_dict[char] = number
-            number_string = ""
-    return count_dict
 
 
 def get_corp(filename):
