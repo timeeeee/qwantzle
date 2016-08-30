@@ -16,10 +16,18 @@ int letter_indices[256];
 
 
 int main(int argc, char* argv[]) {
-  if (argc < 2) {
-    std::cout << "Usage-  solve wordlist\n";
+  if (argc < 3) {
+    std::cout << "Usage-  solve wordlist anagram <word2> <word3>...\n";
     return 1;
   }
+
+  // Put together the anagram as a single string
+  std::string anagram = "";
+  for (int i = 2; i < argc; i++) {
+    anagram += argv[i];
+    anagram += " ";
+  }
+  anagram.erase(anagram.size() - 1);
 
   std::ifstream infile;
   infile.open(argv[1]);
@@ -55,7 +63,12 @@ int main(int argc, char* argv[]) {
   }
   
   int anagram_counts [26];
-  count_letters("Field of dreams", anagram_counts);
+  count_letters(anagram, anagram_counts);
+  std::cerr << anagram << ": ";
+  for (int i = 0; i < 26; i++) {
+    std::cerr << anagram_counts[i] << " ";
+  }
+  std::cerr << std::endl;
    
   std::cerr << solve(wordlist, letter_counts, anagram_counts) << std::endl;
 
