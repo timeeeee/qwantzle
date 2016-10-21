@@ -1,8 +1,6 @@
 Qwantzle solver
 ===============
 
-
-
 Solve [The Qwantzle](http://qwantz.com/index.php?comic=1663) anagram from Dinosaur Comics, with this letter count:
 12t10o8e7a6l6n6u5i5s5d5h5y3I3r3fbbwwkcmvg
 
@@ -13,8 +11,8 @@ Hints
 - What's more, all words in the solution are in the Jadrian's awesome Qwantz Corpus!
 - The solution is natural-sounding, reasonably-grammatical dialogue that T-Rex would say, using phrasing that T-Rex would use.
 - The punctuation :,!! is in the solution, in that order!
-- The longest word in the solution is 11 characters long.
-- The second longest word contains 8 characters and is next to the 11 character word
+- The longest word in the solution is "fundamental".
+- The second longest word contains 8 characters and is next to the word "fundamental".
 - The solution does not refer to anagrams or puzzles or winning t-shirts.
 - However, what T-Rex is saying is directly related to the content of the comic the puzzle appears in.
 - The letters given are case-sensitive!
