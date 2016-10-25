@@ -21,19 +21,14 @@ Hints
 Strategy
 --------
 
-- Choose compatible 8 and 11 letter words, then use recursion with backtracking to generate all possible word sets for the rest of the sentence.
-- Use a trie to keep track of which characters can come next in a word.
-- In making the trie, filter out words that
+1. Create two wordlists that match the qwantzle letter counts minus 3 I's and "fundamental", one with 8-letter words and one with shorter words, filtering out words from a blacklist.
+2. For each 8 letter word:
 
-  - Don't fit the letter counts
-  - Have 9 or 10 letter
-  - Aren't dictionary words
-  - Aren't in the Qwantz Corpus
-  
-- At any step, only consider letters that come next in the trie and are available in a running letter count.
-- Only generate words in alphabetical order, to avoid generating the same word sets in different orders.
+  1. Further filter the short word list to remove anything that doesn't match the letter counts minus the chosen 8-letter word.
+  2. Build a trie from the remaining words.
+  3. Recursively guess letters from the trie, backtracking when running out of available letters.
 
-This will generate all possible sets of words that fit the requirements, which can then be permuted.
+Only generate words in alphabetical order; this will generate all possible sets of words that fit the requirements, which can then be permuted.
 
 Evaluating results
 ------------------
