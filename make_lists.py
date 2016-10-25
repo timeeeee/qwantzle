@@ -60,10 +60,12 @@ if __name__ == "__main__":
             elif length == 8:
                 eight_letter.append(word)
 
+    short.sort()
     with open(SHORT_OUT, "w") as short_out:
         for word in short:
             short_out.write(word + "\n")
 
+    eight_letter.sort()
     with open(EIGHT_OUT, "w") as eight_out:
         for word in eight_letter:
             eight_out.write(word + "\n")
