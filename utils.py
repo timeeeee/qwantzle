@@ -49,3 +49,9 @@ def load_wordlist(filename):
     """Load word list from a file into a list of strings"""
     with open(filename) as f:
         return [line.strip() for line in f]
+
+
+def load_corpus(filename):
+    """Load word list from file with format <count> <word>"""
+    with open(filename) as f:
+        return [line.split()[1] for line in f]
