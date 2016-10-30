@@ -1,0 +1,9 @@
+# cpp compiled files
+*.o
+
+# python compiled files
+*.pyc
+
+# editor temp files
+*~
+\#*\#
